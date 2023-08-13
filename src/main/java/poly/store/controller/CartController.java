@@ -38,10 +38,10 @@ public class CartController {
     }
 
     @RequestMapping("/cart/update")
-    public String update(HttpServletRequest request){
+    public String update(HttpServletRequest request) {
         cartService.getItems().forEach(item -> {
             Integer id = item.getId();
-            int qty = Integer.parseInt(request.getParameter("qty"+id));
+            int qty = Integer.parseInt(request.getParameter("qty_" + id));
             cartService.update(id, qty);
         });
         return "cart/view";
