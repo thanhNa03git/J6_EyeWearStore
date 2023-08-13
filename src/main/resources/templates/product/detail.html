@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/shared/layout::dynamic(~{::title},~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:fragment="title">Trang chi sản phẩm</title>
+</head>
+
+<body>
+    <main th:fragment="main">
+        <!-- Open Content -->
+        <section class="bg-light">
+            <div class="container pb-5">
+                <div class="row">
+                    <div class="col-lg-5 mt-5">
+                        <div class="card mb-3">
+                            <img class="card-img img-fluid"  th:src="@{'/assets/image/' + ${item.image}}"
+                                alt="Card image cap" id="product-detail">
+                        </div>
+                        <div class="row">
+                            <!--Start Controls-->
+                            <div class="col-1 align-self-center">
+                                <a href="#multi-item-example" role="button" data-bs-slide="prev">
+                                    <i class="text-dark fas fa-chevron-left"></i>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </div>
+                            <!--End Controls-->
+                            <!--Start Carousel Wrapper-->
+                            <div id="multi-item-example" class="col-10 carousel slide carousel-multi-item"
+                                data-bs-ride="carousel">
+                                <!--Start Slides-->
+                                <div class="carousel-inner product-links-wap" role="listbox">
+
+                                    <!--First slide-->
+                                    <div class="carousel-item active">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid"
+                                                        th:src="@{'/assets/img/product_single_01.jpg'}"
+                                                        alt="Product Image 1">
+                                                </a>
+                                            </div>
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid"
+                                                        th:src="@{'/assets/img/product_single_02.jpg'}"
+                                                        alt="Product Image 2">
+                                                </a>
+                                            </div>
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid"
+                                                        th:src="@{'/assets/img/product_single_03.jpg'}"
+                                                        alt="Product Image 3">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/.First slide-->
+
+                                    <!--Second slide-->
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid"
+                                                        th:src="@{'/assets/img/product_single_04.jpg'}"
+                                                        alt="Product Image 4">
+                                                </a>
+                                            </div>
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid"
+                                                        th:src="@{'/assets/img/product_single_05.jpg'}"
+                                                        alt="Product Image 5">
+                                                </a>
+                                            </div>
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid"
+                                                        th:src="@{'/assets/img/product_single_06.jpg'}"
+                                                        alt="Product Image 6">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/.Second slide-->
+
+                                    <!--Third slide-->
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid"
+                                                        th:src="@{'/assets/img/product_single_07.jpg'}"
+                                                        alt="Product Image 7">
+                                                </a>
+                                            </div>
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid"
+                                                        th:src="@{'/assets/img/product_single_08.jpg'}"
+                                                        alt="Product Image 8">
+                                                </a>
+                                            </div>
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid"
+                                                        th:src="@{'/assets/img/product_single_09.jpg'}"
+                                                        alt="Product Image 9">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/.Third slide-->
+                                </div>
+                                <!--End Slides-->
+                            </div>
+                            <!--End Carousel Wrapper-->
+                            <!--Start Controls-->
+                            <div class="col-1 align-self-center">
+                                <a href="#multi-item-example" role="button" data-bs-slide="next">
+                                    <i class="text-dark fas fa-chevron-right"></i>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <!--End Controls-->
+                        </div>
+                    </div>
+                    <!-- col end -->
+                    <div class="col-lg-7 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="h2"><span th:text="${item.name}"></span></h1>
+                                <p class="h3 py-2"><span th:text="${item.price}"></span></p>
+                                <p class="py-2">
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-secondary"></i>
+                                    <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
+                                </p>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <h6>Thể loại hàng:</h6>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong><span
+                                                    th:text="${item.category.name}"></span></strong></p>
+                                    </li>
+                                </ul>
+
+                                <h6>Mô tả sản phẩm:</h6>
+                                <p>Mắt kính gọng thời trang là món phụ kiện không thể thiếu trong bộ sưu tập của bất kỳ
+                                    ai theo đuổi phong cách tinh tế và cá tính. Với thiết kế đa dạng từ truyền thống đến
+                                    hiện đại, từ gọng mỏng nhẹ đến gọng vuông sang trọng, chúng tôi cam kết mang đến cho
+                                    bạn sự lựa chọn đa dạng và phù hợp với khuôn mặt. Chất liệu cao cấp và kỹ thuật sản
+                                    xuất tinh xảo đảm bảo sự thoải mái và độ bền. Hãy để mắt kính của chúng tôi tôn lên
+                                    vẻ đẹp của bạn và thể hiện phong cách riêng biệt.</p>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <h6>Tồn:</h6>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong><span th:text="${item.available}"></span></strong>
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <form action="" method="GET">
+                                    <input type="hidden" name="product-title" value="Activewear">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <ul class="list-inline pb-3">
+                                                <li class="list-inline-item">Màu sắc:
+                                                    <input type="hidden" name="product-size" id="product-size"
+                                                        value="S">
+                                                </li>
+                                                <li class="list-inline-item"><span
+                                                        class="btn btn-success btn-size">Trắng</span>
+                                                </li>
+                                                <li class="list-inline-item"><span
+                                                        class="btn btn-success btn-size">Đen</span>
+                                                </li>
+                                                <li class="list-inline-item"><span
+                                                        class="btn btn-success btn-size">Xám</span>
+                                                </li>
+                                                <li class="list-inline-item"><span class="btn btn-success btn-size">Họa
+                                                        tiết</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-auto">
+                                            <ul class="list-inline pb-3">
+                                                <li class="list-inline-item text-right">
+                                                    Quantity
+                                                    <input type="hidden" name="product-quanity" id="product-quanity"
+                                                        value="1">
+                                                </li>
+                                                <li class="list-inline-item"><span class="btn btn-success"
+                                                        id="btn-minus">-</span></li>
+                                                <li class="list-inline-item"><span class="badge bg-secondary"
+                                                        id="var-value">1</span></li>
+                                                <li class="list-inline-item"><span class="btn btn-success"
+                                                        id="btn-plus">+</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row pb-3">
+                                        <div class="col d-grid">
+                                            <button type="submit" class="btn btn-success btn-lg" name="submit"
+                                                value="buy">Buy</button>
+                                        </div>
+                                        <div class="col d-grid">
+                                            <button type="submit" class="btn btn-success btn-lg" name="submit"
+                                                value="addtocard">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Close Content -->
+        <!-- Start Article -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row text-left p-2 pb-3">
+                    <h4>Sản phẩm tương tự</h4>
+                </div>
+
+                <!--Start Carousel Wrapper-->
+                <div class="row">
+                    <div class="col-md-3" th:each="p : ${item.category.products}">
+                        <div class="card mb-4 product-wap rounded-0" style="width: 303px">
+                            <div class="card rounded-0">
+                                <img style="width: 303px; height: 303px;" class="card-img rounded-0 img-fluid"
+                                    th:src="@{'/assets/image/' + ${p.image}}">
+                                <div
+                                    class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                    <ul class="list-unstyled">
+                                        <li><button class="btn btn-success text-white mt-2"><i
+                                                    class="fas fa-cart-plus"> Thêm Vào Giỏ Hàng</i></button>
+                                        </li>
+                                        <li><a class="btn btn-success text-white mt-2"
+                                                th:href="@{|/product/detail/${p.id}|}"><i
+                                                    class="fas fa-cart-plus"> Chi Tiết Sản Phẩm</i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-center mb-0"><span th:text="${p.name}"></span></p>
+                                <p class="text-center mb-0"><span th:text="${p.price}"></span> VND</p>
+                                <p class="text-center mb-0"><span th:text="${p.category.name}"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Article -->
+    </main>
+
+    <!-- Start Slider Script -->
+    <script src="assets/js/slick.min.js"></script>
+    <script>
+        $('#carousel-related-product').slick({
+            infinite: true,
+            arrows: false,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            dots: true,
+            responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 3
+                }
+            }
+            ]
+        });
+    </script>
+    <!-- End Slider Script -->
+</body>
+
+</html>
