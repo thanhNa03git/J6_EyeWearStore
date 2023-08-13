@@ -14,4 +14,11 @@ public class AccountService {
 	public void create(Account account) {
 		dao.save(account);
 	}
+	public Account findByUsername(String username) {
+		return dao.findById(username).get();
+	}
+
+	public void update(Account account) {
+		dao.save(account);
+	}
 }
