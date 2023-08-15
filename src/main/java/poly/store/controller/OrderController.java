@@ -1,6 +1,7 @@
 package poly.store.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,8 @@ public class OrderController {
     OrderDetailService orderDetailService;
 
     @GetMapping("/order/checkout")
-    public String checkout(@ModelAttribute("order")Order order){
-        String username = "user1";
+    public String checkout(@ModelAttribute("order")Order order, Authentication auth){
+        String username = auth.getName();
         Account account = accountService.findByUsername(username);
         order.setCreateDate(new Date());
         order.setAccount(account);
@@ -60,8 +61,8 @@ public class OrderController {
         return "redirect:/order/list";
     }
     @RequestMapping("/order/list")
-    public String list(Model model){
-        String username = "user1";
+    public String list(Model model, Authentication auth){
+        String username = auth.getName();
         Account account = accountService.findByUsername(username);
         model.addAttribute("user", account);
         return "/order/list";
