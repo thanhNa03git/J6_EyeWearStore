@@ -27,4 +27,9 @@ public class AccountService {
 	public void update(Account account) {
 		dao.save(account);
 	}
+
+//    public void changePassword(Account account, String newpass) {
+//		account.setPassword(passwordEncoder.encode(newpass));
+//		dao.save(account);
+//    }
 }

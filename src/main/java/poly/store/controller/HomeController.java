@@ -28,6 +28,14 @@ public class HomeController {
 	public String contact() {
 		return "home/contact";
 	}
+	@RequestMapping("/account/social-links")
+	public String socialLinks() {
+		return "account/social-links";
+	}
+	@RequestMapping("/account/connections")
+	public String connection() {
+		return "account/connections";
+	}
 
 	public List<Category> getCategories() {
 		return service.findAll();

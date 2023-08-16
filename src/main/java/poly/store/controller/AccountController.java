@@ -2,6 +2,7 @@ package poly.store.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,8 @@ public class AccountController {
             model.addAttribute("message", "Xác nhận mật khẩu không chính xác");
         } else {
             accountService.create(account);
-            model.addAttribute("message", "Đăng ký thành công");
+            model.addAttribute("message", "Đăng ký thành công, hãy Đăng Nhập");
+            return "security/login";
         }
         return "account/sign-up";
     }
@@ -49,6 +51,42 @@ public class AccountController {
         model.addAttribute("message", "Thông tin tài khoản của bạn đã được cập nhật");
         return "account/edit-profile";
     }
+    //Doi mat khau
+    @GetMapping("/account/change-password")
+    public String changePasswordForm(Model model) {
+//        String username = auth.getName();
+//        Account account = accountService.findByUsername(username);
+//        model.addAttribute("account", account);
+        return "account/change-password";
+    }
+    @PostMapping("/account/change-password")
+    public String changePasswordProcess(Model model, @ModelAttribute("account") Account account,
+                                        @RequestParam("username") String username,
+                                        @RequestParam("oldpass") String oldpass,
+                                        @RequestParam("newpass") String newpass,
+                                        @RequestParam("confirm") String confirm ) {
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String changePass= auth.getName();
+        account = accountService.findByUsername(changePass);
+
+        if(!oldpass.equals(account.getPassword())) {
+            model.addAttribute("message","Mật khẩu cũ của bạn không chính xác");
+            return "account/change-password";
+        }
+        if(!newpass.equals(confirm)) {
+            model.addAttribute("message","Xác nhận mật khẩu mới không khớp!");
+            return "account/change-password";
+        }
+
+        //cập nhật mật khẩu mới
+        account.setPassword(newpass);
+        accountService.update(account);
+
+        model.addAttribute("message", "Mật khẩu đã được thay đổi thành công");
+
+        return "account/change-password";
+    }
+
     //Quen mat khau
     @GetMapping("/account/forgot-password")
     public String forgotPasswordForm() {
@@ -60,22 +98,5 @@ public class AccountController {
                                         @RequestParam("email") String email) {
         return "account/forgot-password";
     }
-    //Doi mat khau
-    @GetMapping("/account/change-password")
-    public String changePasswordForm(Model model,Authentication auth) {
-        String username = auth.getName();
-        Account account = accountService.findByUsername(username);
-        model.addAttribute("account", account);
-        return "account/change-password";
-    }
-    @PostMapping("/account/change-password")
-    public String changePasswordProcess(Model model,
-                                        @RequestParam("username") String username,
-                                        @RequestParam("oldpass") String oldpass,
-                                        @RequestParam("newpass") String newpass,
-                                        @RequestParam("confirm") String confirm ) {
 
-
-        return "account/change-password";
-    }
 }

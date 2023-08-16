@@ -3,7 +3,7 @@ package poly.store.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-
+@SuppressWarnings("serial")
 @Data
 @Entity
 @Table(name = "Authorities", uniqueConstraints = {

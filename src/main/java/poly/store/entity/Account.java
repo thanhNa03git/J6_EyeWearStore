@@ -19,6 +19,7 @@ public class Account{
 	String email;
 	String photo;
 
+//	@JsonIgnore
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	List<Authority> authorities;
 
